@@ -61,7 +61,6 @@ class PokemonCard extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -76,10 +75,13 @@ class PokemonCard extends StatelessWidget {
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 60),
-                  Image.network(imageUrl,
-                      height: 160, width: 160, fit: BoxFit.cover),
+                  const SizedBox(height: 5),
+                  Expanded(
+                    child: Image.network(imageUrl,
+                        height: 170, width: 170, fit: BoxFit.contain),
+                  ),
                   const SizedBox(height: 5),
                   Text(
                     capitalizeName(name),
@@ -99,6 +101,7 @@ class PokemonCard extends StatelessWidget {
                       _buildStat(speed, 'Speed'),
                     ],
                   ),
+                  const SizedBox(height: 10),
                 ],
               ),
             ],

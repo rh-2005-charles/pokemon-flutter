@@ -25,16 +25,14 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) => const PokemonPage()), 
+        MaterialPageRoute(builder: (context) => const PokemonPage()),
       );
     });
   }
 
   Future<void> fetchPokemonData() async {
     try {
-      final response =
-          await _dio.get('https://pokeapi.co/api/v2/pokemon/25'); 
+      final response = await _dio.get('https://pokeapi.co/api/v2/pokemon/25');
       if (response.statusCode == 200) {
         setState(() {
           pokemonImageUrl = response.data['sprites']['front_default'];
@@ -97,7 +95,7 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
                   ),
                 ),
                 const SizedBox(height: 40),
-               
+
                 if (isLoading)
                   const CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
@@ -126,7 +124,7 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
                     ),
                   ),
                 const SizedBox(height: 20),
-                
+
                 if (pokemonName.isNotEmpty)
                   Text(
                     pokemonName.toUpperCase(),
@@ -144,7 +142,7 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
                     ),
                   ),
                 const SizedBox(height: 40),
-               
+
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   width: 200,
@@ -154,7 +152,7 @@ class _PokemonHomePageState extends State<PokemonHomePage> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                
+
                 const Icon(
                   Icons.catching_pokemon,
                   size: 70,
